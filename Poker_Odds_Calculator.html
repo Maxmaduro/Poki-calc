@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poker Odds Calculator</title>
+</head>
+<body>
+<h1>Poker Odds Calculator</h1>
+<form id="pokerForm">
+    Your Hand: <input type="text" id="hand" placeholder="e.g., As Ks"><br>
+    Community Cards: <input type="text" id="community" placeholder="e.g., 2d 3d 4d"><br>
+    Pot Size: <input type="number" id="potSize" placeholder="100"><br>
+    Bet Size: <input type="number" id="betSize" placeholder="20"><br>
+    <button type="button" onclick="calculateOdds()">Calculate Odds</button>
+</form>
+<div id="result"></div>
+
+<script>
+function calculateOdds() {
+    // Get input values
+    var hand = document.getElementById("hand").value.split(" ");
+    var community = document.getElementById("community").value.split(" ");
+    var potSize = parseFloat(document.getElementById("potSize").value);
+    var betSize = parseFloat(document.getElementById("betSize").value);
+
+    // Simple logic to calculate odds (to be refined)
+    var winProbability = 0.5;  // Placeholder for win probability
+    var potOdds = betSize / (potSize + betSize);
+
+    // Simple decision logic based on pot odds and win probability
+    var decision = winProbability > potOdds ? "Call" : "Fold";
+    document.getElementById("result").innerHTML = "Win Probability: " + winProbability.toFixed(2) + 
+                                                  ", Pot Odds: " + potOdds.toFixed(2) + 
+                                                  ", Decision: " + decision;
+}
+</script>
+</body>
+</html>
